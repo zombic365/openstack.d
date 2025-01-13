@@ -122,6 +122,7 @@ function flavor_create() {
         if [ $? -eq 0 ]; then
             _FLAVOR_ID=$(jq -r .id .flavor_out.json)
             _FLAVOR_NAME=$(jq -r .name .flavor_out.json)
+            [ -f .flavor_out.json ] && rm -f .flavor_out.json
             logging_message "INFO" "NAME: ${_FLAVOR_NAME} | UUID: ${_FLAVOR_ID}"
             return 0
         else
